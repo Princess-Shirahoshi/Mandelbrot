@@ -20,29 +20,29 @@ unsigned int screenHeight;
 
 int main()
 {
-    //Get the Desktop Resolution here && divide it by 2 to get the resolution
     screenWidth = VideoMode::getDesktopMode().width / 2;
     screenHeight = VideoMode::getDesktopMode().height / 2;
+    //game.out is up to date before here
 
     VideoMode desktop = VideoMode::getDesktopMode();
 
-    //RenderWindow -> https://www.sfml-dev.org/documentation/2.6.1/classsf_1_1RenderWindow.php
-    RenderWindow window(desktop, "Mandelbrot");
+    RenderWindow window(desktop, "Mandelbrot", Style::Default);
+    //game.out is still up to date before here
 
-    //window.create(screenWidth, screenHeight)
+    bool update = true;
 
     while (window.isOpen())
     {
         Event event;
-            while (window.pollEvent(event))
+    
+        while (window.pollEvent(event))
+        {
+            if (event.type == Event::Closed)
             {
-                if (event.type == Event::Closed)
-                {
-                    window.close();
-                }
-
-                window.clear();
-                window.display();
+                window.close();
             }
+        }
     }
+    //game.out is still up to date before here
+
 }

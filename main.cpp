@@ -25,5 +25,24 @@ int main()
     screenHeight = VideoMode::getDesktopMode().height / 2;
 
     VideoMode desktop = VideoMode::getDesktopMode();
-    window.create(screenWidth, screenHeight)
+
+    //RenderWindow -> https://www.sfml-dev.org/documentation/2.6.1/classsf_1_1RenderWindow.php
+    RenderWindow window(desktop, "Mandelbrot");
+
+    //window.create(screenWidth, screenHeight)
+
+    while (window.isOpen())
+    {
+        Event event;
+            while (window.pollEvent(event))
+            {
+                if (event.type == Event::Closed)
+                {
+                    window.close();
+                }
+
+                window.clear();
+                window.display();
+            }
+    }
 }

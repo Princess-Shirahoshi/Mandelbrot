@@ -1,8 +1,11 @@
 #include "ComplexPlane.h"
 
-ComplexPlane::ComplexPlane(int pixelWidth, int pixelHeight);
-
-ComplexPlane::~ComplexPlane()
+ComplexPlane::ComplexPlane(int pixelWidth, int pixelHeight)
 {
-    
+  //
 }
+
+/*ComplexPlane::~ComplexPlane()
+{
+
+}*/

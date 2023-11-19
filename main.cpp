@@ -11,39 +11,40 @@
 #include <sstream>
 #include <vector>
 
-//Namespace Declarations 
+//Namespace Declarations
 using namespace sf;
 using namespace std;
 
-unsigned int screenWidth;
-unsigned int screenHeight;
-//Main starting here
 
-int main()
-{
-    screenWidth = VideoMode::getDesktopMode().width / 2;
-    screenHeight = VideoMode::getDesktopMode().height / 2;
-    //game.out is up to date before here
-
+int main() {
+    //grabs the desktop resolution
     VideoMode desktop = VideoMode::getDesktopMode();
 
-    RenderWindow window(desktop, "Mandelbrot", Style::Default);
-    //game.out is still up to date before here
+    //Divides the screen's resolution by 2 to scale down the screen
+    unsigned int screenWidth = desktop.width / 2;
+    unsigned int screenHeight = desktop.height / 2;
 
-    bool update = true;
+    //Creates the window 
+    RenderWindow window(VideoMode(screenWidth, screenHeight), "Mandlebrot Set", Style::Default);
 
-    while (window.isOpen())
+    while (window.isOpen()) 
     {
         Event event;
-    
+
         while (window.pollEvent(event))
         {
-            if (event.type == Event::Closed)
+            if (event.type == Event::Closed) 
             {
                 window.close();
             }
+
+            //closes window if esc key is pressed
+            if (Keyboard::isKeyPressed(Keyboard::Escape))
+		    {
+			    window.close();
+		    }
         }
     }
-    //game.out is still up to date before here
+    window.display();
 
 }

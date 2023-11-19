@@ -10,6 +10,12 @@ class ComplexPlane : public Drawable
 {
     public:
 
+        // So, I had to look this up because I was a bit confused 
+        // we need ComplexPlane at the top and we're pulling from Drawable 
+        // Per the notes it says "Declare an enum class type named State"
+        // Tbh, all header names at this point have been the name of the file, so it should be 
+        // literally under the ComplexPlane class. 
+        // Thoughts? 
         const unsigned int MAX_ITER = 64;
         const float BASE_WIDTH = 4.0;
         const float BASE_HEIGHT = 4.0;
@@ -31,7 +37,8 @@ class ComplexPlane : public Drawable
         void updateRender();
 
     private:
-
+        //Per the UML diargram these all have the "-" which would like mean private
+        // Gabe, let me know if these match up in your eyes
         int countInteractions(Vector2f coord);
         void iterationsToRGB(size_t count, Uint8& r, Uint8& g, Uint8& b);
         Vector2f mapPixelToCoords(Vector2i mousePixel);

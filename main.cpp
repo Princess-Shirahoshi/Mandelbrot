@@ -21,11 +21,13 @@ int main() {
     VideoMode desktop = VideoMode::getDesktopMode();
 
     //Divides the screen's resolution by 2 to scale down the screen
-    unsigned int screenWidth = desktop.width / 2;
-    unsigned int screenHeight = desktop.height / 2;
+    unsigned int pixelWidth = desktop.width / 2;
+    unsigned int pixelHeight = desktop.height / 2;
 
     //Creates the window 
-    RenderWindow window(VideoMode(screenWidth, screenHeight), "Mandlebrot Set", Style::Default);
+    RenderWindow window(VideoMode(pixelWidth, pixelHeight), "Mandlebrot Set", Style::Default);
+    ComplexPlane complexPlane(pixelWidth, pixelWidth)
+
 
     while (window.isOpen()) 
     {

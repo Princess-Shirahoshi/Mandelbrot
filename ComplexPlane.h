@@ -28,28 +28,28 @@ class ComplexPlane : public Drawable
         };
 
         ComplexPlane(int pixelWidth, int pixelHeight);
-        void draw(RenderTarget& target, RenderStates states) const;
-        void zoomIn();
-        void zoomOut();
-        void setcenter(Vector2i mousePixel);
-        void setMouseLocation(Vector2i mousePixel);
-        void loadText(Text& text);
-        void updateRender();
+        //void draw(RenderTarget& target, RenderStates states) const;
+        //void zoomIn();
+        //void zoomOut();
+        //void setcenter(Vector2i mousePixel);
+        //void setMouseLocation(Vector2i mousePixel);
+        //void loadText(Text& text);
+        //void updateRender();
 
     private:
         //Per the UML diargram these all have the "-" which would like mean private
         // Gabe, let me know if these match up in your eyes
-        int countInteractions(Vector2f coord);
-        void iterationsToRGB(size_t count, Uint8& r, Uint8& g, Uint8& b);
-        Vector2f mapPixelToCoords(Vector2i mousePixel);
-        VertexArray m_vArray;
-        State m_state;
-        Vector2f m_mouseLocation;
-        Vector2i m_pixel_size;
-        Vector2f m_plane_center;
-        Vector2f m_plane_size;
-        int m_zoomCount;
-        float m_aspectRatio;
+        //int countInteractions(Vector2f coord);
+        //void iterationsToRGB(size_t count, Uint8& r, Uint8& g, Uint8& b);
+        //Vector2f mapPixelToCoords(Vector2i mousePixel);
+        //VertexArray m_vArray;
+        //State m_state;
+        //Vector2f m_mouseLocation;
+        //Vector2i m_pixel_size;
+        //Vector2f m_plane_center;
+        //Vector2f m_plane_size;
+        //int m_zoomCount;
+        //float m_aspectRatio;
 };
 
 #endif

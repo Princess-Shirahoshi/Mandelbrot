@@ -20,6 +20,15 @@ class ComplexPlane : public Drawable
             CALCULATING,
             DISPLAYING
         };
+
+        ComplexPlane(int pixelWidth, int pixelHeight);
+        void draw(RenderTarget& target, RenderStates states) const;
+        void zoomIn();
+        void zoomOut();
+        void setcenter(Vector2i mousePixel);
+        void setMouseLocation(Vector2i mousePixel);
+        void loadText(Text& text);
+        void updateRender();
 };
 
-#endif 
+#endif

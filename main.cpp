@@ -7,6 +7,7 @@
 #include <SFML/System/Clock.hpp>
 #include <SFML/Window/VideoMode.hpp>
 #include <iostream>
+#include "ComplexPlane.h"
 #include <sstream>
 #include <vector>
 

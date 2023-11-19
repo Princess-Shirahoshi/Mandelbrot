@@ -8,6 +8,7 @@
 #include <SFML/Window/VideoMode.hpp>
 #include <iostream>
 #include "ComplexPlane.h"
+#include "ComplexPlane.cpp"
 #include <sstream>
 #include <vector>
 
@@ -26,7 +27,7 @@ int main() {
 
     //Creates the window 
     RenderWindow window(VideoMode(pixelWidth, pixelHeight), "Mandlebrot Set", Style::Default);
-    ComplexPlane complexPlane(pixelWidth, pixelWidth)
+    ComplexPlane ComplexPlane(pixelWidth, pixelWidth);
 
 
     while (window.isOpen()) 

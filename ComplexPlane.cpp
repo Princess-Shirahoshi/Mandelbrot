@@ -1,6 +1,8 @@
-//#include "ComplexPlane.h"
+#include "ComplexPlane.h"
 
-/*ComplexPlane::ComplexPlane(int pixelWidth, int pixelHeight)
+ComplexPlane::ComplexPlane(int pixelWidth, int pixelHeight);
+
+ComplexPlane::~ComplexPlane()
 {
-    return 0
-}*/
+    
+}

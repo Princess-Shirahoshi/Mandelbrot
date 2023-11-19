@@ -4,6 +4,19 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
+using namespace sf;
+
+const unsigned int MAX_ITER = 64;
+const float BASE_WIDTH = 4.0;
+const float BASE_HEIGHT = 4.0;
+const float BASE_ZOOM = 0.5;
+
+enum class State
+{
+    CALCULATING,
+    DISPLAYING
+};
+
 
 // Need to inherit from Drawable (like in the UML diagram I think)
 class ComplexPlane : public Drawable
@@ -16,19 +29,9 @@ class ComplexPlane : public Drawable
         // Tbh, all header names at this point have been the name of the file, so it should be 
         // literally under the ComplexPlane class. 
         // Thoughts? 
-        const unsigned int MAX_ITER = 64;
-        const float BASE_WIDTH = 4.0;
-        const float BASE_HEIGHT = 4.0;
-        const float BASE_ZOOM = 0.5;
-
-        enum class State
-        {
-            CALCULATING,
-            DISPLAYING
-        };
-
+        
         ComplexPlane(int pixelWidth, int pixelHeight);
-        //void draw(RenderTarget& target, RenderStates states) const;
+        virtual void draw(RenderTarget& target, RenderStates states) const;
         //void zoomIn();
         //void zoomOut();
         //void setcenter(Vector2i mousePixel);

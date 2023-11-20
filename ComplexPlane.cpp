@@ -22,5 +22,6 @@ ComplexPlane::ComplexPlane(int pixelWidth, int pixelHeight)
   // To be ready for the initial screen
   m_state = State::CALCULATING;
 
-  m_vArray.set
+  m_vArray.setPrimitiveType(Points);
+  m_vArray.resize(pixelWidth * pixelHeight);
 }

@@ -2,6 +2,7 @@
 #define COMPLEXPLANE_H
 
 #include <SFML/Graphics.hpp>
+#include <SFML/Graphics/VertexArray.hpp>
 #include <iostream>
 
 using namespace sf;
@@ -42,6 +43,7 @@ class ComplexPlane : public Drawable
     private:
         //Per the UML diargram these all have the "-" which would like mean private
         // Gabe, let me know if these match up in your eyes
+
         int countInteractions(Vector2f coord);
         void iterationsToRGB(size_t count, Uint8& r, Uint8& g, Uint8& b);
         Vector2f mapPixelToCoords(Vector2i mousePixel);

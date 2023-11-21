@@ -44,7 +44,7 @@ void ComplexPlane::draw(RenderTarget& target, RenderStates states)
 }
 
 
-void zoomIn()
+void ComplexPlane::zoomIn()
 {
   double zoomIn_x;
   double zoomIn_y;
@@ -61,7 +61,7 @@ void zoomIn()
 }
 
 
-void zoomOut()
+void ComplexPlane::zoomOut()
 {
   double zoomIn_x;
   double zoomIn_y;
@@ -76,7 +76,15 @@ void zoomOut()
 
   m_state = CALCULATING;
 }
-        void setcenter(Vector2i mousePixel);
+
+
+void ComplexPlane::setcenter(Vector2i mousePixel)
+{
+  m_plane_center = mapPixelToCoords(mousePixel);
+  m_state = CALCULATING;
+}
+
+
         void setMouseLocation(Vector2i mousePixel);
         void loadText(Text& text);
         void updateRender();

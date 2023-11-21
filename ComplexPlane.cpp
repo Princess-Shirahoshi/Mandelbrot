@@ -80,11 +80,22 @@ void ComplexPlane::zoomOut()
 
 void ComplexPlane::setcenter(Vector2i mousePixel)
 {
-  m_plane_center = mapPixelToCoords(mousePixel);
+  double center_x;
+  double center_y;
+  // Because mapPixelToCoords is a vector
+  Vector2f center_Coords; 
+  center_Coords = mapPixelToCoords(mousePixel);
+
+  m_plane_center.x = center_Coords.x;
+  m_plane_center.y = center_Coords.y;
+  
   m_state = CALCULATING;
 }
 
 
-        void setMouseLocation(Vector2i mousePixel);
+void ComplexPlane::setMouseLocation(Vector2i mousePixel)
+{
+  m_mouseLocation = mapPixelToCoords(mousePixel);
+}
         void loadText(Text& text);
         void updateRender();

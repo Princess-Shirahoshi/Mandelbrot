@@ -1,5 +1,6 @@
 #include "ComplexPlane.h"
 #include <SFML/Graphics/VertexArray.hpp>
+#include <cmath>
 
 
 ComplexPlane::ComplexPlane(int pixelWidth, int pixelHeight)
@@ -36,7 +37,7 @@ ComplexPlane::ComplexPlane(int pixelWidth, int pixelHeight)
 }
 
 
-void ComplexPlane::draw(RenderTarget& target, RenderStates states)
+void ComplexPlane::draw(RenderTarget& target, RenderStates states) const
 {
   // Draw the Vertex Array
   // Like the Professor's really cool rainbow line thing from class
@@ -57,7 +58,7 @@ void ComplexPlane::zoomIn()
   m_plane_size.x = zoomIn_x;
   m_plane_size.y = zoomIn_y;
 
-  m_state = CALCULATING;
+  m_state = State::CALCULATING;
 }
 
 
@@ -74,22 +75,21 @@ void ComplexPlane::zoomOut()
   m_plane_size.x = zoomIn_x;
   m_plane_size.y = zoomIn_y;
 
-  m_state = CALCULATING;
+  m_state = State::CALCULATING;
 }
 
 
 void ComplexPlane::setcenter(Vector2i mousePixel)
 {
-  double center_x;
-  double center_y;
+
   // Because mapPixelToCoords is a vector
   Vector2f center_Coords; 
   center_Coords = mapPixelToCoords(mousePixel);
 
   m_plane_center.x = center_Coords.x;
   m_plane_center.y = center_Coords.y;
-  
-  m_state = CALCULATING;
+
+  m_state = State::CALCULATING;
 }
 
 

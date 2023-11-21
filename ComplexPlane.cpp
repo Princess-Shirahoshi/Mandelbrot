@@ -20,8 +20,17 @@ ComplexPlane::ComplexPlane(int pixelWidth, int pixelHeight)
   m_zoomCount = 0;
 
   // To be ready for the initial screen
+  // Initial State really
   m_state = State::CALCULATING;
 
+  // I am having the hardest time to get this to work 
+  // I checked the documentation and this should be accurate, but like what the heck is wrong
+  // Points seems to work and sf::Points
   m_vArray.setPrimitiveType(Points);
+
+  // Fit the window basically here
   m_vArray.resize(pixelWidth * pixelHeight);
+
+  // Displaying here
+  updateRender();
 }

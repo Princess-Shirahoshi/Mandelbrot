@@ -56,14 +56,25 @@ void zoomIn()
 
   m_plane_size.x = zoomIn_x;
   m_plane_size.y = zoomIn_y;
-  
+
   m_state = CALCULATING;
 }
 
 
 void zoomOut()
 {
+  double zoomIn_x;
+  double zoomIn_y;
 
+  //m_zoomCount from private
+  m_zoomCount = m_zoomCount - 1;
+  zoomIn_x = BASE_WIDTH * (pow(BASE_ZOOM, m_zoomCount));
+  zoomIn_y = (BASE_HEIGHT * m_aspectRatio) * (pow(BASE_ZOOM, m_zoomCount));
+
+  m_plane_size.x = zoomIn_x;
+  m_plane_size.y = zoomIn_y;
+
+  m_state = CALCULATING;
 }
         void setcenter(Vector2i mousePixel);
         void setMouseLocation(Vector2i mousePixel);

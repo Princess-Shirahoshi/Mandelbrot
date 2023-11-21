@@ -119,8 +119,34 @@ void ComplexPlane::updateRender()
 {
   // j for x
   // i for y 
+  int j = 0;
+  int i = 0;
+
   if (m_state == State::CALCULATING)
   {
+    for (j = 0; j < m_pixel_size.x; j++)
+    {
+      for (i = 0; i < m_pixel_size.y; i++)
+      {
+        m_vArray[j + i * m_pixel_size.x].position = {(float)j, (float)i};
 
+        Vector2f center_Coords = mapPixelToCoords(j, i);
+        //Not complete
+      }
+    }
   }
+}
+
+int ComplexPlane::countInteractions(Vector2f coord)
+{
+
+}
+
+void iterationsToRGB(size_t count, Uint8& r, Uint8& g, Uint8& b)
+{
+
+}
+Vector2f mapPixelToCoords(Vector2i mousePixel)
+{
+
 }

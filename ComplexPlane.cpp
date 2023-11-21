@@ -117,5 +117,10 @@ void ComplexPlane::loadText(Text& text)
 
 void ComplexPlane::updateRender()
 {
-  
+  // j for x
+  // i for y 
+  if (m_state == State::CALCULATING)
+  {
+
+  }
 }

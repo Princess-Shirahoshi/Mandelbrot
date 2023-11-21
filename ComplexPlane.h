@@ -32,7 +32,9 @@ class ComplexPlane : public Drawable
         // Thoughts? 
         
         ComplexPlane(int pixelWidth, int pixelHeight);
-        virtual void draw(RenderTarget& target, RenderStates states) const;
+
+        //When saving getting an error that "Did you mean..." virtual? 
+        void draw(RenderTarget& target, RenderStates states) const;
         void zoomIn();
         void zoomOut();
         void setcenter(Vector2i mousePixel);

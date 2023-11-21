@@ -34,3 +34,23 @@ ComplexPlane::ComplexPlane(int pixelWidth, int pixelHeight)
   // Displaying here
   updateRender();
 }
+
+
+void ComplexPlane::draw(RenderTarget& target, RenderStates states)
+{
+  // Draw the Vertex Array
+  // Like the Professor's really cool rainbow line thing from class
+  target.draw(m_vArray);
+}
+
+
+void zoomIn()
+{
+  //m_zoomCount from private
+}
+        void zoomIn();
+        void zoomOut();
+        void setcenter(Vector2i mousePixel);
+        void setMouseLocation(Vector2i mousePixel);
+        void loadText(Text& text);
+        void updateRender();

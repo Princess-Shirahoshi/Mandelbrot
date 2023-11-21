@@ -1,7 +1,10 @@
 #include "ComplexPlane.h"
 #include <SFML/Graphics/VertexArray.hpp>
 #include <cmath>
+#include <sstream>
 
+using namespace std;
+using namespace sf;
 
 ComplexPlane::ComplexPlane(int pixelWidth, int pixelHeight)
 {
@@ -9,7 +12,7 @@ ComplexPlane::ComplexPlane(int pixelWidth, int pixelHeight)
   m_pixel_size.y = pixelHeight;
 
   // m_aspectRatio is already defined as a float 
-  // we can also try static_cast<double>
+  // we can also try static_cast<double>/float
   m_aspectRatio = float(pixelHeight) / float(pixelWidth);
 
   m_plane_center.x = 0;
@@ -97,5 +100,22 @@ void ComplexPlane::setMouseLocation(Vector2i mousePixel)
 {
   m_mouseLocation = mapPixelToCoords(mousePixel);
 }
-        void loadText(Text& text);
-        void updateRender();
+
+
+void ComplexPlane::loadText(Text& text)
+{
+  stringstream a;
+  a << "Mandelbrot Set" << endl;
+  //Center here for graphics display
+  a << "Center: (" << m_plane_center.x << "," << m_plane_center.y << ")" << endl;
+  a << "Cursor: (" << m_mouseLocation.x << "," << m_mouseLocation.y << ")" << endl;
+  a << "Left-lik to Zoom in" << endl;
+  a << "Right-click to Zoom out" << endl;
+
+}
+
+
+void ComplexPlane::updateRender()
+{
+  
+}

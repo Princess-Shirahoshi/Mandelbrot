@@ -7,8 +7,8 @@
 #include <iostream>
 #include <sstream>
 #include <vector>
+#include <cmath>
 #include "ComplexPlane.h"
-#include <thread>
 
 //Namespace Declarations
 using namespace sf;
@@ -16,9 +16,9 @@ using namespace std;
 
 
 int main() {
+
     //grabs the desktop resolution
     VideoMode desktop = VideoMode::getDesktopMode();
-
  
     //Divides the screen's resolution by 2 to scale down the screen
     unsigned int pixelWidth = desktop.width / 2;
@@ -28,6 +28,23 @@ int main() {
     RenderWindow window(VideoMode(pixelWidth, pixelHeight), "Mandlebrot Set", Style::Default);
 
     ComplexPlane complexPlane(pixelWidth, pixelHeight);
+
+    //adds music to the program
+    Music music;
+    if (!music.openFromFile("relaxing.wav"))
+    {
+        cerr << "Error! Could not load music file" << endl;
+        return -1;
+    }
+
+    //change the volume here
+    music.setVolume(5);
+
+    // loops it after song is overv
+    music.setLoop(true);
+
+    //plays the music
+    music.play();
 
     // Font for Chaos Game
     Font font;
@@ -102,19 +119,14 @@ int main() {
 
         if (CALCULATING)
         {
-            //updateRender is what we're trying to make faster 
-            // threading
-            // definitely faster BUT STILL SLOW
-            thread thread_to_render(&ComplexPlane::updateRender, &complexPlane);
-            thread_to_render.join();
-            //complexPlane.updateRender(); // performs the mandlebrot set calculations
+            complexPlane.updateRender(); // performs the mandlebrot set calculations
             complexPlane.loadText(text); // pulls up the text info
 
             CALCULATING = false; // sets state back to DISPLAYING once calculations are done
         }
 
         complexPlane.draw(window, RenderStates::Default);
-        
+        //may need to be moved up a bracket to run
         window.draw(text);
         window.display();
     }

@@ -46,7 +46,7 @@ int main() {
     text.setPosition(10, 10); //Positions text
 
     //boolean for CALCULATING
-    bool CALCULATING = false;
+    bool CALCULATING = true;
 
     while (window.isOpen()) 
     {

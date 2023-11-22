@@ -3,6 +3,7 @@
 #include <complex> // for the countIterations function
 #include <sstream> 
 #include <iomanip> //to set precision for coords output
+#include <mutex>
 
 ComplexPlane::ComplexPlane(int pixelWidth, int pixelHeight)
 {

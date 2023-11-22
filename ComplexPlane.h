@@ -4,6 +4,8 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Graphics/VertexArray.hpp>
 #include <iostream>
+#include <mutex>
+#include <thread>
 
 using namespace sf;
 
@@ -54,6 +56,9 @@ class ComplexPlane : public Drawable
         Vector2f m_plane_size;
         int m_zoomCount;
         float m_aspectRatio;
+        // https://www.sfml-dev.org/tutorials/2.6/system-thread.php
+        Mutex mutex;
+
 };
 
 #endif

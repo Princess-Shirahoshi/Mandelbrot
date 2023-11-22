@@ -10,6 +10,7 @@
 #include <cmath>
 #include "ComplexPlane.h"
 #include <thread>
+#include <mutex>
 
 //Namespace Declarations
 using namespace sf;

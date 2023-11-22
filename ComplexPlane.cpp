@@ -35,7 +35,6 @@ void ComplexPlane::updateRender()
 
     if (m_state == State::CALCULATING)
     {
-      // double for loop to iteratre through x & y coords, did y first for improved performance 
       for (i = 0; i < m_pixel_size.y; i++) 
         {
           for (j = 0; j < m_pixel_size.x; j++) 
@@ -66,8 +65,7 @@ void ComplexPlane::updateRender()
 
 void ComplexPlane::zoomIn()
 {
-  // did ++ first so that if it will return and iterate the same number (good practice i think?)
-  ++m_zoomCount; 
+  m_zoomCount++;
 
   // adds new variables and calculates the new sizes based on zoom level
   double sizeX = BASE_WIDTH * std::pow(BASE_ZOOM, m_zoomCount);
@@ -83,8 +81,8 @@ void ComplexPlane::zoomIn()
 
 void ComplexPlane::zoomOut()
 {
-  // did -- first so that if it will return and iterate the same number (good practice i think?)
-  --m_zoomCount; 
+  
+  m_zoomCount--;
 
   // adds new variables and calculates the new sizes based on zoom level
   double sizeX = BASE_WIDTH * std::pow(BASE_ZOOM, m_zoomCount);

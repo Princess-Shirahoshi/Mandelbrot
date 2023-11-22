@@ -114,7 +114,7 @@ int main() {
 
         //draws the scene segment 
         window.clear();
-        complexPlane.draw(window);
+        complexPlane.draw(window, sf::RenderStates::Default);
         //may need to be moved up a bracket to run
         window.display();
         }

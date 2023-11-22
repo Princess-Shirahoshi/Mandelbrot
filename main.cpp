@@ -42,7 +42,7 @@ int main() {
 
     text.setFont(font);
     text.setCharacterSize(40); //Sets text size
-    text.setFillColor(Color::White); //Sets text color
+    text.setFillColor(Color(253, 226, 167)); //Sets text color
     text.setPosition(10, 10); //Positions text
 
     //boolean for CALCULATING
@@ -103,7 +103,10 @@ int main() {
 
         if (CALCULATING)
         {
+            complexPlane.updateRender(); // performs the mandlebrot set calculations
+            complexPlane.loadText(text); // pulls up the text info
 
+            CALCULATING = false; // sets state back to DISPLAYING once calculations are done
         }
         //updates the scene segment
         complexPlane.updateRender();

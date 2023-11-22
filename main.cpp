@@ -103,7 +103,8 @@ int main() {
         if (CALCULATING)
         {
             //updateRender is what we're trying to make faster 
-            //
+            // threading
+            // definitely faster BUT STILL SLOW
             thread thread_to_render(&ComplexPlane::updateRender, &complexPlane);
             thread_to_render.join();
             //complexPlane.updateRender(); // performs the mandlebrot set calculations
@@ -113,7 +114,7 @@ int main() {
         }
 
         complexPlane.draw(window, RenderStates::Default);
-        //may need to be moved up a bracket to run
+        
         window.draw(text);
         window.display();
     }

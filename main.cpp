@@ -145,11 +145,11 @@ int main() {
             }
             // threading this to update and render a bit faster 
             render_thread = thread(&ComplexPlane::updateRender, &complexPlane);
-            complexPlane.loadText(text); // pulls up the text info
+            
 
             CALCULATING = false; // sets state back to DISPLAYING once calculations are done
         }
-
+        complexPlane.loadText(text); // pulls up the text info
         complexPlane.draw(window, RenderStates::Default);
         //may need to be moved up a bracket to run
         window.draw(text);

@@ -32,12 +32,10 @@ class ComplexPlane : public Drawable
         // Thoughts? 
         
         ComplexPlane(int pixelWidth, int pixelHeight);
-
-        //When saving getting an error that "Did you mean..." virtual? 
-        void draw(RenderTarget& target, RenderStates states) const;
+        virtual void draw(RenderTarget& target, RenderStates states) const;
         void zoomIn();
         void zoomOut();
-        void setcenter(Vector2i mousePixel);
+        void setCenter(Vector2i mousePixel);
         void setMouseLocation(Vector2i mousePixel);
         void loadText(Text& text);
         void updateRender();
@@ -46,7 +44,7 @@ class ComplexPlane : public Drawable
         //Per the UML diargram these all have the "-" which would like mean private
         // Gabe, let me know if these match up in your eyes
 
-        int countInteractions(Vector2f coord);
+        size_t countIterations(Vector2f coord);
         void iterationsToRGB(size_t count, Uint8& r, Uint8& g, Uint8& b);
         Vector2f mapPixelToCoords(Vector2i mousePixel);
         VertexArray m_vArray;

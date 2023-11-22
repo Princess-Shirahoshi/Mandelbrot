@@ -8,9 +8,9 @@
 #include <sstream>
 #include <vector>
 #include <cmath>
-#include "ComplexPlane.h"
 #include <thread>
 #include <mutex>
+#include "ComplexPlane.h"
 
 //Namespace Declarations
 using namespace sf;
@@ -32,21 +32,21 @@ int main() {
     ComplexPlane complexPlane(pixelWidth, pixelHeight);
 
     //adds music to the program
-    /*Music music;
+    Music music;
     if (!music.openFromFile("relaxing.wav"))
     {
         cerr << "Error! Could not load music file" << endl;
         return -1;
-    }*/
+    }
 
     //change the volume here
-    //music.setVolume(5);
+    music.setVolume(5);
 
     // loops it after song is overv
-    //music.setLoop(true);
+    music.setLoop(true);
 
     //plays the music
-    //music.play();
+    music.play();
 
     // Font for Chaos Game
     Font font;
@@ -61,15 +61,19 @@ int main() {
     Text text;
 
     text.setFont(font);
-    text.setCharacterSize(30); //Sets text size
+    text.setCharacterSize(20); //Sets text size
     text.setFillColor(Color(253, 226, 167)); //Sets text color
     text.setPosition(10, 10); //Positions text
 
     //boolean for CALCULATING
     bool CALCULATING = true;
+
     // thread variable for the updateRender (not iterations yet)
-    thread render_thread;
-    // thread for interactions
+    thread render_thread1;
+    thread render_thread2;
+    //thread render_thread3;
+
+    // thread for interations
     thread iterations_thread;
 
     while (window.isOpen()) 
@@ -111,14 +115,6 @@ int main() {
                     //sets CALCULATING to true
                     complexPlane.setCenter(Vector2i(mousePos.x, mousePos.y));
                     complexPlane.zoomIn();
-
-                    if (iterations_thread.joinable())
-                    {
-                        iterations_thread.join();
-                    }
-                    //countIterations is private
-                    // we need a new variable for it / function for it 
-                    iterations_thread = thread(&ComplexPlane::countIterations, &complexPlane, Vector2f(mousePos.x, mousePos.y));
                     CALCULATING = true;
                 }
             }
@@ -138,14 +134,27 @@ int main() {
             //thread render_thread(&ComplexPlane::updateRender, &complexPlane);
             //The professors link is for SFML threading documentation, but take note this is a C++ library
             //joinable is basically like can they be threaded together? Like 1 + 1 = 2
-            if (render_thread.joinable())
-            {
-                // join these threads together
-                render_thread.join();
-            }
-            // threading this to update and render a bit faster 
-            render_thread = thread(&ComplexPlane::updateRender, &complexPlane);
             
+            // join these threads together
+            if (render_thread1.joinable())
+            {
+                render_thread1.join();
+            }
+            if (render_thread2.joinable())
+            {
+                render_thread2.join();
+            }
+            /*else if (render_thread3.joinable())
+            {
+                //render_thread3.join();
+            }
+                */
+            // threading this to update and render a bit faster 
+            render_thread1 = thread(&ComplexPlane::updateRender, &complexPlane);
+            //render_thread2 = thread(&ComplexPlane::updateRender, &testY);
+            //render_thread3 = thread(&ComplexPlane::updateRender, &testX);
+            
+            //render_thread.join();
 
             CALCULATING = false; // sets state back to DISPLAYING once calculations are done
         }

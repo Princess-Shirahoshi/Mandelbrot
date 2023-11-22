@@ -76,7 +76,7 @@ int main() {
                     //right click to zoom out
                     //calls the setCenter on the ComplexPlane object from mouse clicked position
                     //sets CALCULATING to true
-                    complexPlane.setCenter(mousePos.x, mousePos.y);
+                    complexPlane.setCenter(Vector2i(mousePos.x, mousePos.y));
                     complexPlane.zoomOut();
                     CALCULATING = true;
                 }
@@ -85,7 +85,7 @@ int main() {
                     //left click to zoom in
                     //calls setCenter on the ComplexPlane object from mouse clicked postion
                     //sets CALCULATING to true
-                    complexPlane.setCenter(mousePos.x, mousePos.y);
+                    complexPlane.setCenter(Vector2i(mousePos.x, mousePos.y));
                     complexPlane.zoomIn();
                     CALCULATING = true;
                 }
@@ -94,7 +94,7 @@ int main() {
             {
                 //mouse moved event here
                 //calls setMouseLocation on the ComplexPlane object and stores mouse coords
-                complexPlane.setMouseLocation(event.mouseMove.x, event.mouseMove.y);
+                complexPlane.setMouseLocation(Vector2i(event.mouseMove.x, event.mouseMove.y));
             }
 
         }
@@ -110,7 +110,7 @@ int main() {
         }
         //updates the scene segment
         complexPlane.updateRender();
-        complexPlane.loadText();
+        complexPlane.loadText(text);
 
         //draws the scene segment 
         window.clear();

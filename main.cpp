@@ -8,6 +8,7 @@
 #include <sstream>
 #include <vector>
 #include "ComplexPlane.h"
+#include <thread>
 
 //Namespace Declarations
 using namespace sf;
@@ -101,7 +102,11 @@ int main() {
 
         if (CALCULATING)
         {
-            complexPlane.updateRender(); // performs the mandlebrot set calculations
+            //updateRender is what we're trying to make faster 
+            //
+            thread thread_to_render(&ComplexPlane::updateRender, &complexPlane);
+            thread_to_render.join();
+            //complexPlane.updateRender(); // performs the mandlebrot set calculations
             complexPlane.loadText(text); // pulls up the text info
 
             CALCULATING = false; // sets state back to DISPLAYING once calculations are done

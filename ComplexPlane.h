@@ -40,12 +40,13 @@ class ComplexPlane : public Drawable
         void setMouseLocation(Vector2i mousePixel);
         void loadText(Text& text);
         void updateRender();
+        size_t countIterations(Vector2f coord);
 
     private:
         //Per the UML diargram these all have the "-" which would like mean private
         // Gabe, let me know if these match up in your eyes
 
-        size_t countIterations(Vector2f coord);
+        
         void iterationsToRGB(size_t count, Uint8& r, Uint8& g, Uint8& b);
         Vector2f mapPixelToCoords(Vector2i mousePixel);
         VertexArray m_vArray;

@@ -69,6 +69,8 @@ int main() {
     bool CALCULATING = true;
     // thread variable for the updateRender (not iterations yet)
     thread render_thread;
+    // thread for interactions
+    thread iterations_thread;
 
     while (window.isOpen()) 
     {
@@ -109,6 +111,14 @@ int main() {
                     //sets CALCULATING to true
                     complexPlane.setCenter(Vector2i(mousePos.x, mousePos.y));
                     complexPlane.zoomIn();
+
+                    if (iterations_thread.joinable())
+                    {
+                        iterations_thread.join();
+                    }
+                    //countIterations is private
+                    // we need a new variable for it / function for it 
+                    iterations_thread = thread(&ComplexPlane::countIterations, &complexPlane, Vector2f(mousePos.x, mousePos.y));
                     CALCULATING = true;
                 }
             }

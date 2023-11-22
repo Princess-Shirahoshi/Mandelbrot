@@ -66,6 +66,8 @@ int main() {
 
     //boolean for CALCULATING
     bool CALCULATING = true;
+    // thread variable for the updateRender (not iterations yet)
+    thread render_thread;
 
     while (window.isOpen()) 
     {
@@ -122,8 +124,16 @@ int main() {
         {
             //complexPlane.updateRender(); // performs the mandlebrot set calculations
             // I am going to thread this as well, to help render it faster because the speed is crazy slow 
-            thread render_thread(&ComplexPlane::updateRender, &complexPlane);
-            render_thread.join();
+            //thread render_thread(&ComplexPlane::updateRender, &complexPlane);
+            //The professors link is for SFML threading documentation, but take note this is a C++ library
+            //joinable is basically like can they be threaded together? Like 1 + 1 = 2
+            if (render_thread.joinable())
+            {
+                // join these threads together
+                render_thread.join();
+            }
+            // threading this to update and render a bit faster 
+            render_thread = thread(&ComplexPlane::updateRender, &complexPlane);
             complexPlane.loadText(text); // pulls up the text info
 
             CALCULATING = false; // sets state back to DISPLAYING once calculations are done

@@ -9,6 +9,7 @@
 #include <vector>
 #include <cmath>
 #include "ComplexPlane.h"
+#include <thread>
 
 //Namespace Declarations
 using namespace sf;
@@ -30,21 +31,21 @@ int main() {
     ComplexPlane complexPlane(pixelWidth, pixelHeight);
 
     //adds music to the program
-    Music music;
+    /*Music music;
     if (!music.openFromFile("relaxing.wav"))
     {
         cerr << "Error! Could not load music file" << endl;
         return -1;
-    }
+    }*/
 
     //change the volume here
-    music.setVolume(5);
+    //music.setVolume(5);
 
     // loops it after song is overv
-    music.setLoop(true);
+    //music.setLoop(true);
 
     //plays the music
-    music.play();
+    //music.play();
 
     // Font for Chaos Game
     Font font;
@@ -119,7 +120,10 @@ int main() {
 
         if (CALCULATING)
         {
-            complexPlane.updateRender(); // performs the mandlebrot set calculations
+            //complexPlane.updateRender(); // performs the mandlebrot set calculations
+            // I am going to thread this as well, to help render it faster because the speed is crazy slow 
+            thread render_thread(&ComplexPlane::updateRender, &complexPlane);
+            render_thread.join();
             complexPlane.loadText(text); // pulls up the text info
 
             CALCULATING = false; // sets state back to DISPLAYING once calculations are done

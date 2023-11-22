@@ -30,12 +30,15 @@ void ComplexPlane::draw(sf::RenderTarget& target, sf::RenderStates states) const
 
 void ComplexPlane::updateRender()
 {
+  int i;
+  int j;
+
     if (m_state == State::CALCULATING)
     {
       // double for loop to iteratre through x & y coords, did y first for improved performance 
-      for (int i = 0; i < m_pixel_size.y; ++i) 
+      for (i = 0; i < m_pixel_size.y; i++) 
         {
-          for (int j = 0; j < m_pixel_size.x; ++j) 
+          for (j = 0; j < m_pixel_size.x; j++) 
           {
               // sets the position varaible from VertexArray to align with screen coords j, i
               m_vArray[j + i * m_pixel_size.x].position = { (float)j, (float)i }; 

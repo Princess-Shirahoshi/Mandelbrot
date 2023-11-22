@@ -4,8 +4,7 @@
 #include <sstream> 
 #include <iomanip> //to set precision for coords output
 
-//did we wanna use this for the cpp or just main? it says its bad pratice on big projects and std: is easier to debug if we have issues
-//using namespace std;
+
 
 ComplexPlane::ComplexPlane(int pixelWidth, int pixelHeight)
 {

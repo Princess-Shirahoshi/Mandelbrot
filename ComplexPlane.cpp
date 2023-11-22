@@ -186,6 +186,8 @@ void ComplexPlane::iterationsToRGB(size_t count, Uint8& r, Uint8& g, Uint8& b)
     size_t region = count / regionSize;
 
   // calculates color depending on region, used switch case to keep options seperate
+
+  //why did you choose, switch?
     switch (region)
     {
       case 0: // adds gradient effect to colors

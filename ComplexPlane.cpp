@@ -10,6 +10,7 @@
 ComplexPlane::ComplexPlane(int pixelWidth, int pixelHeight)
 {
   m_pixel_size.x = pixelWidth;
+  m_pixel_size.y = pixelHeight;
 
   m_plane_center = {0, 0};
   m_plane_size = {BASE_WIDTH, BASE_HEIGHT * m_aspectRatio};
@@ -169,6 +170,7 @@ void ComplexPlane::iterationsToRGB(size_t count, Uint8& r, Uint8& g, Uint8& b)
   const Uint8 SET_R = 47; //color codes to set the mandlebrot set's color
   const Uint8 SET_G = 39;
   const Uint8 SET_B = 51;
+
 
   // sets default color to black when max iteration count is reached
   if (count == MAX_ITER)

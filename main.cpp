@@ -41,7 +41,7 @@ int main() {
     Text text;
 
     text.setFont(font);
-    text.setCharacterSize(40); //Sets text size
+    text.setCharacterSize(30); //Sets text size
     text.setFillColor(Color(253, 226, 167)); //Sets text color
     text.setPosition(10, 10); //Positions text
 
@@ -78,8 +78,6 @@ int main() {
                     //sets CALCULATING to true
                     complexPlane.setCenter(Vector2i(mousePos.x, mousePos.y));
                     complexPlane.zoomOut();
-                    complexPlane.updateRender();
-                    complexPlane.loadText(text);
                     CALCULATING = true;
                 }
                 else if (event.mouseButton.button == Mouse::Left)
@@ -89,8 +87,6 @@ int main() {
                     //sets CALCULATING to true
                     complexPlane.setCenter(Vector2i(mousePos.x, mousePos.y));
                     complexPlane.zoomIn();
-                    complexPlane.updateRender();
-                    complexPlane.loadText(text);
                     CALCULATING = true;
                 }
             }
@@ -107,20 +103,15 @@ int main() {
         {
             complexPlane.updateRender(); // performs the mandlebrot set calculations
             complexPlane.loadText(text); // pulls up the text info
+
             CALCULATING = false; // sets state back to DISPLAYING once calculations are done
         }
-        //updates the scene segment
-        complexPlane.updateRender();
-        complexPlane.loadText(text);
-        //complexPlane.state(State::DISPLAYING);
 
-        //draws the scene segment 
-        //window.clear();
-        complexPlane.draw(window, sf::RenderStates::Default);
-        window.draw(text);
+        complexPlane.draw(window, RenderStates::Default);
         //may need to be moved up a bracket to run
+        window.draw(text);
         window.display();
-        }
+    }
 
     return 0;
 }

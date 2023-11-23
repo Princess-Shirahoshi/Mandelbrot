@@ -3,6 +3,7 @@
 #include <complex> // for the countIterations function
 #include <sstream> 
 #include <iomanip> //to set precision for coords output
+#include <mutex>
 
 ComplexPlane::ComplexPlane(int pixelWidth, int pixelHeight)
 {
@@ -27,13 +28,16 @@ void ComplexPlane::draw(sf::RenderTarget& target, sf::RenderStates states) const
     target.draw(m_vArray);
 }
 
-void ComplexPlane::updateRender(int pixelHeight) // size_t
+void ComplexPlane::updateRender(int a, int b) // size_t
 {
+    // locks in the mutex, we are using this because we want to prevent data races, which could worsen performance
+    std::lock_guard<std::mutex> lock(std::mutex); 
+
     if (m_state == State::CALCULATING)
     {
 
       // double for loop to iteratre through x & y coords, did y first for improved performance 
-      for (int i = 0; i < m_pixel_size.y; ++i) 
+      for (int i = a; i < b; ++i) 
         {
           for (int j = 0; j < m_pixel_size.x; ++j) 
           {

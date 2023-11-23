@@ -72,6 +72,7 @@ int main() {
     thread render_thread1;
     thread render_thread2;
     thread render_thread3;
+    thread render_thread4;
 
     // thread for interations
     thread iterations_thread;
@@ -148,13 +149,16 @@ int main() {
             {
                 render_thread3.join();
             }
+            if (render_thread4.joinable())
+            {
+                render_thread4.join();
+            }
             
             // threading this to update and render a bit faster 
-            render_thread1 = thread(&ComplexPlane::updateRender, &complexPlane, 4);
-            render_thread2 = thread(&ComplexPlane::updateRender, &complexPlane, pixelHeight / 4);
-            render_thread3 = thread(&ComplexPlane::updateRender, &complexPlane, pixelHeight / 2);
-            
-            //render_thread.join();
+            render_thread1 = thread(&ComplexPlane::updateRender, &complexPlane, 0, pixelHeight / 4); //now it divides render into 4 sections
+            render_thread2 = thread(&ComplexPlane::updateRender, &complexPlane, pixelHeight / 4, pixelHeight / 2);
+            render_thread3 = thread(&ComplexPlane::updateRender, &complexPlane, pixelHeight / 2, 3 * pixelHeight / 4);
+            render_thread4 = thread(&ComplexPlane::updateRender, &complexPlane, 3 * pixelHeight / 4, pixelHeight);
 
             CALCULATING = false; // sets state back to DISPLAYING once calculations are done
         }
@@ -164,6 +168,23 @@ int main() {
         window.draw(text);
         window.display();
     }
+        //added join again before terminating program so threads dont keep going (prevents Aborted (core dumped) error)
+        if (render_thread1.joinable())
+        {
+            render_thread1.join();
+        }
+        if (render_thread2.joinable())
+        {
+            render_thread2.join();
+        }
+        if (render_thread3.joinable())
+        {
+            render_thread3.join();
+        }
+        if (render_thread4.joinable())
+        {
+            render_thread4.join();
+        }
 
     return 0;
 }

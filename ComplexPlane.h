@@ -39,7 +39,7 @@ class ComplexPlane : public Drawable
         void setCenter(Vector2i mousePixel);
         void setMouseLocation(Vector2i mousePixel);
         void loadText(Text& text);
-        void updateRender(int pixelHeight);
+        void updateRender(int a, int b);
         size_t countIterations(Vector2f coord);
 
     private:
@@ -58,7 +58,8 @@ class ComplexPlane : public Drawable
         int m_zoomCount;
         float m_aspectRatio;
         // https://www.sfml-dev.org/tutorials/2.6/system-thread.php
-        Mutex mutex;
+        Mutex thisMutex;
+        // do we need this? it runs fine without it but i needed to remane the mutex cuz it confused it with the actual <mutex>
 
 };
 
